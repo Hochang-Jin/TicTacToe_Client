@@ -575,9 +575,9 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 720, y: 1280}
+  m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 1
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1160,6 +1160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b200e731dc2311c419f39c29cee5571d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  confirmPanel: {fileID: 5254653811508028053, guid: 79798eb2ff4a3014487b352751eefab0, type: 3}
 --- !u!4 &1643913697
 Transform:
   m_ObjectHideFlags: 0
@@ -1494,7 +1495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.6074226, g: 0.6603774, b: 0.62571865, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
