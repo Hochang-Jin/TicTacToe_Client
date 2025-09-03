@@ -46,5 +46,11 @@ public class GameManager : Singleton<GameManager>
     {
         // TODO : 씬 전환 시 처리할 함수
         _canvas = FindFirstObjectByType<Canvas>();
+
+        if (scene.name == "Game")
+        {
+            var blockController = FindFirstObjectByType<BlockController>();
+            blockController.InitBlocks();
+        }
     }
 }
