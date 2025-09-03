@@ -33,12 +33,12 @@ public class GameManager : Singleton<GameManager>
     /// Confirm Panel을 띄우는 메소드
     /// </summary>
     /// <param name="message"></param>
-    public void OpenConfirmPanel(string message)
+    public void OpenConfirmPanel(string message, ConfirmPanelController.OnConfirmButtonClicked onConfirmButtonClicked = null)
     {
         if (_canvas != null)
         {
             var confirmPanelObject = Instantiate(confirmPanel, _canvas.transform);
-            confirmPanelObject.GetComponent<ConfirmPanelController>().Show(message);
+            confirmPanelObject.GetComponent<ConfirmPanelController>().Show(message, onConfirmButtonClicked);
         }
     }
     

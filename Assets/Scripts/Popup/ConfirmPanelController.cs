@@ -5,14 +5,18 @@ using UnityEngine.SceneManagement;
 public class ConfirmPanelController : PanelController
 {
     [SerializeField] private TMP_Text messageText;
+    
+    public delegate void OnConfirmButtonClicked();
+    private OnConfirmButtonClicked _onConfirmButtonClicked;
 
     /// <summary>
     /// Confirm Panel을 표시하는 메소드
     /// </summary>
     /// <param name="message"></param>
-    public void Show(string message)
+    public void Show(string message, OnConfirmButtonClicked onConfirmButtonClicked = null)
     {
         messageText.text = message;
+        _onConfirmButtonClicked = onConfirmButtonClicked;
         base.Show();
     }
     
@@ -21,8 +25,7 @@ public class ConfirmPanelController : PanelController
     /// </summary>
     public void OnClickConfirmButton()
     {
-        Hide();
-        SceneManager.LoadScene("Main");
+        Hide(()=>_onConfirmButtonClicked?.Invoke());
     }
     
     /// <summary>
