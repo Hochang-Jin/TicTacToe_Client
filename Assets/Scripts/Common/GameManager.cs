@@ -11,6 +11,10 @@ public class GameManager : Singleton<GameManager>
     // Panel을 띄우기 위한 Canvas 정보
     private Canvas _canvas;
     
+    private GameLogic _gameLogic;
+    
+    
+    
     /// <summary>
     /// Main -> Game Scene으로 전환 시 호출 될 메소드
     /// </summary>
@@ -49,8 +53,16 @@ public class GameManager : Singleton<GameManager>
 
         if (scene.name == "Game")
         {
+            // Block 초기화
             var blockController = FindFirstObjectByType<BlockController>();
             blockController.InitBlocks();
+            
+            // Game Logic 생성
+            if (_gameLogic != null)
+            {
+                // TODO: 기존 게임 로직 소멸
+            }
+            _gameLogic = new GameLogic(blockController, _gameType);
         }
     }
 }

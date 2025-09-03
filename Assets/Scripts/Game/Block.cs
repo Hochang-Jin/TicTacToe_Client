@@ -9,6 +9,9 @@ public class Block : MonoBehaviour
     [SerializeField] private Sprite xSprite;
     [SerializeField] private SpriteRenderer markerSpriteRenderer;
 
+    public delegate void OnBlockClicked(int index);
+    private OnBlockClicked _onBlockClicked;
+
     public enum MarkerType {NONE, O, X}
 
     private int _blockIndex;
@@ -23,11 +26,12 @@ public class Block : MonoBehaviour
     }
 
     // 1. 마커 초기화
-    public void InitMarker(int blockIndex)
+    public void InitMarker(int blockIndex, OnBlockClicked onBlockClicked = null)
     {
         _blockIndex = blockIndex;
         SetMarker(MarkerType.NONE);
         SetBlockColor(_defaultBlockColor);
+        _onBlockClicked = onBlockClicked;
     }
 
     // 2. 마커 스프라이트 설정
