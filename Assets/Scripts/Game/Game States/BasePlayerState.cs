@@ -13,7 +13,8 @@ public abstract class BasePlayerState
         {
             // 새롭게 놓여진 마커를 기반으로 게임의 결과를 판단
             var gameResult = gameLogic.CheckGameResult();
-            if(gameResult == GameLogic.GameResult.NONE) HandleNextTurn(gameLogic);
+            if(gameResult == GameLogic.GameResult.NONE) 
+                HandleNextTurn(gameLogic);
             else
             {
                 gameLogic.EndGame(gameResult);

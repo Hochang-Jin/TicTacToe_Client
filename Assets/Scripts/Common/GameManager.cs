@@ -13,7 +13,7 @@ public class GameManager : Singleton<GameManager>
     
     private GameLogic _gameLogic;
     
-    
+    private GameUIController _gameUIController;
     
     /// <summary>
     /// Main -> Game Scene으로 전환 시 호출 될 메소드
@@ -48,21 +48,35 @@ public class GameManager : Singleton<GameManager>
     
     protected override void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
-        // TODO : 씬 전환 시 처리할 함수
         _canvas = FindFirstObjectByType<Canvas>();
 
         if (scene.name == "Game")
         {
             // Block 초기화
             var blockController = FindFirstObjectByType<BlockController>();
-            blockController.InitBlocks();
+            if (blockController != null)
+            {
+                blockController.InitBlocks();
+            }
+            else
+            {
+                // TODO: 오류 팝업을 표시하고 게임 종료하도록 
+            }
+            
+            // Game UI Controller 할당 및 초기화
+            _gameUIController = FindFirstObjectByType<GameUIController>();
+            if (_gameUIController != null)
+            {
+                _gameUIController.SetGameTurnPanel(GameUIController.GameTurnPanelType.NONE);
+            }
             
             // Game Logic 생성
-            if (_gameLogic != null)
-            {
-                // TODO: 기존 게임 로직 소멸
-            }
             _gameLogic = new GameLogic(blockController, _gameType);
         }
+    }
+
+    public void SetGameTurnPanel(GameUIController.GameTurnPanelType gameTurnPanelType)
+    {
+        _gameUIController.SetGameTurnPanel(gameTurnPanelType);
     }
 }

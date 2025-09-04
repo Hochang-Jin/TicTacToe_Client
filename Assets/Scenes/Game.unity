@@ -1794,6 +1794,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48bb082ce0ffb76428e2979846b4218a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerATurnPanel: {fileID: 258123156}
+  playerBTurnPanel: {fileID: 1578763450}
 --- !u!4 &1673696810
 Transform:
   m_ObjectHideFlags: 0

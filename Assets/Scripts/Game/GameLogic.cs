@@ -78,8 +78,12 @@ public class GameLogic
         firstPlayerState = null;
         secondPlayerState = null;
         
-        // TODO: 유저에게 Game Over 패널 표시
-        Debug.Log("Game OVER");
+        // 유저에게 Game Over 패널 표시
+        
+        GameManager.Instance.OpenConfirmPanel("게임 오버", () =>
+        {
+            GameManager.Instance.ChangeToMainScene();
+        });
     }
     
     // 게임의 결과 확인
