@@ -1796,6 +1796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerATurnPanel: {fileID: 258123156}
   playerBTurnPanel: {fileID: 1578763450}
+  gameTypeText: {fileID: 894780558}
 --- !u!4 &1673696810
 Transform:
   m_ObjectHideFlags: 0

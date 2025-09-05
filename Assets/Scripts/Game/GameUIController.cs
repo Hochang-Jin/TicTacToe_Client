@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,7 @@ public class GameUIController : MonoBehaviour
 {
     [SerializeField] private GameObject playerATurnPanel;
     [SerializeField] private GameObject playerBTurnPanel;
+    [SerializeField] private TMP_Text gameTypeText;
     
     public enum GameTurnPanelType { NONE, ATURN, BTURN }
     
@@ -32,6 +34,22 @@ public class GameUIController : MonoBehaviour
             case GameTurnPanelType.BTURN:
                 playerATurnPanel.SetActive(false);
                 playerBTurnPanel.SetActive(true);
+                break;
+        }
+    }
+
+    public void SetGameType(Constants.GameType gameType)
+    {
+        switch (gameType)
+        {
+            case Constants.GameType.SINGLE:
+                gameTypeText.text = "싱글 플레이";
+                break;
+            case Constants.GameType.DUAL:
+                gameTypeText.text = "듀얼 플레이";
+                break;
+            case Constants.GameType.MULTI:
+                gameTypeText.text = "멀티 플레이";
                 break;
         }
     }

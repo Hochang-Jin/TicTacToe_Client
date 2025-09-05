@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private GameObject confirmPanel;
+    [SerializeField] private GameObject signInPanel;
     
     // Main Scene에서 선택한 게임 타입
     private Constants.GameType _gameType;
@@ -14,7 +16,12 @@ public class GameManager : Singleton<GameManager>
     private GameLogic _gameLogic;
     
     private GameUIController _gameUIController;
-    
+
+    private void Start()
+    {
+        OpenSignInPanel();
+    }
+
     /// <summary>
     /// Main -> Game Scene으로 전환 시 호출 될 메소드
     /// </summary>
@@ -46,6 +53,18 @@ public class GameManager : Singleton<GameManager>
         }
     }
     
+    /// <summary>
+    /// 로그인 팝업 표시 함수
+    /// </summary>
+    public void OpenSignInPanel()
+    {
+        if (_canvas != null)
+        {
+            var signInPanelObject = Instantiate(signInPanel, _canvas.transform);
+            signInPanelObject.GetComponent<SignInPanelController>().Show();
+        }
+    }
+    
     protected override void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
         _canvas = FindFirstObjectByType<Canvas>();
@@ -72,6 +91,9 @@ public class GameManager : Singleton<GameManager>
             
             // Game Logic 생성
             _gameLogic = new GameLogic(blockController, _gameType);
+            
+            // Title 변경
+            _gameUIController.SetGameType(_gameType);
         }
     }
 
@@ -79,4 +101,5 @@ public class GameManager : Singleton<GameManager>
     {
         _gameUIController.SetGameTurnPanel(gameTurnPanelType);
     }
+
 }

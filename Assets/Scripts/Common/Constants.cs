@@ -6,4 +6,6 @@ public class Constants
     public enum PlayerType { NONE, PLAYERA, PLAYERB }
 
     public const int BlockColumnCount = 3;
+    
+    public const string ServerURL = "http://localhost:3000";
 }
