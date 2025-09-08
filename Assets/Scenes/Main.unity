@@ -1206,6 +1206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   confirmPanel: {fileID: 5254653811508028053, guid: 79798eb2ff4a3014487b352751eefab0, type: 3}
   signInPanel: {fileID: 5254653811508028053, guid: 7665989c585e2154ebaf6803c32ef4b9, type: 3}
+  signUpPanel: {fileID: 5254653811508028053, guid: 101766c01a909ef47a25e4969da91a23, type: 3}
 --- !u!4 &1643913697
 Transform:
   m_ObjectHideFlags: 0

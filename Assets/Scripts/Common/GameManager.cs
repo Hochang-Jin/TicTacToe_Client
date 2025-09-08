@@ -6,6 +6,7 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private GameObject confirmPanel;
     [SerializeField] private GameObject signInPanel;
+    [SerializeField]  private GameObject signUpPanel;
     
     // Main Scene에서 선택한 게임 타입
     private Constants.GameType _gameType;
@@ -19,7 +20,10 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        OpenSignInPanel();
+        // 로그인
+        var sid = PlayerPrefs.GetString("sid");
+        if(string.IsNullOrEmpty(sid))
+            OpenSignInPanel();
     }
 
     /// <summary>
@@ -62,6 +66,15 @@ public class GameManager : Singleton<GameManager>
         {
             var signInPanelObject = Instantiate(signInPanel, _canvas.transform);
             signInPanelObject.GetComponent<SignInPanelController>().Show();
+        }
+    }
+
+    public void OpenSignUpPanel()
+    {
+        if (_canvas != null)
+        {
+            var signUpPanelObject = Instantiate(signUpPanel, _canvas.transform);
+            signUpPanelObject.GetComponent<SignUpPanelController>().Show();
         }
     }
     
