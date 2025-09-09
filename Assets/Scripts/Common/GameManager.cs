@@ -41,6 +41,8 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public void ChangeToMainScene()
     {
+        _gameLogic?.Dispose();
+        _gameLogic = null;
         SceneManager.LoadScene("Main");
     }
 
@@ -115,4 +117,9 @@ public class GameManager : Singleton<GameManager>
         _gameUIController.SetGameTurnPanel(gameTurnPanelType);
     }
 
+    private void OnApplicationQuit()
+    {
+        _gameLogic?.Dispose();
+        _gameLogic = null;
+    }
 }
